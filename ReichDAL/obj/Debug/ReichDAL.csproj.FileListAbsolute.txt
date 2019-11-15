@@ -1,0 +1,6 @@
+C:\Users\amitn\source\repos\ReichUI\ReichDAL\bin\Debug\ReichDAL.dll
+C:\Users\amitn\source\repos\ReichUI\ReichDAL\bin\Debug\ReichDAL.pdb
+C:\Users\amitn\source\repos\ReichUI\ReichDAL\obj\Debug\ReichDAL.csprojAssemblyReference.cache
+C:\Users\amitn\source\repos\ReichUI\ReichDAL\obj\Debug\ReichDAL.csproj.CoreCompileInputs.cache
+C:\Users\amitn\source\repos\ReichUI\ReichDAL\obj\Debug\ReichDAL.dll
+C:\Users\amitn\source\repos\ReichUI\ReichDAL\obj\Debug\ReichDAL.pdb

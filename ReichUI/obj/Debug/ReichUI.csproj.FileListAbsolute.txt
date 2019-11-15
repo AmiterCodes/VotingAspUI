@@ -1,0 +1,12 @@
+C:\Users\amitn\source\repos\ReichUI\ReichUI\bin\Debug\ReichUI.exe.config
+C:\Users\amitn\source\repos\ReichUI\ReichUI\bin\Debug\ReichUI.exe
+C:\Users\amitn\source\repos\ReichUI\ReichUI\bin\Debug\ReichUI.pdb
+C:\Users\amitn\source\repos\ReichUI\ReichUI\bin\Debug\ReichBL.dll
+C:\Users\amitn\source\repos\ReichUI\ReichUI\bin\Debug\ReichDAL.dll
+C:\Users\amitn\source\repos\ReichUI\ReichUI\bin\Debug\ReichBL.pdb
+C:\Users\amitn\source\repos\ReichUI\ReichUI\bin\Debug\ReichDAL.pdb
+C:\Users\amitn\source\repos\ReichUI\ReichUI\obj\Debug\ReichUI.csprojAssemblyReference.cache
+C:\Users\amitn\source\repos\ReichUI\ReichUI\obj\Debug\ReichUI.csproj.CoreCompileInputs.cache
+C:\Users\amitn\source\repos\ReichUI\ReichUI\obj\Debug\ReichUI.csproj.CopyComplete
+C:\Users\amitn\source\repos\ReichUI\ReichUI\obj\Debug\ReichUI.exe
+C:\Users\amitn\source\repos\ReichUI\ReichUI\obj\Debug\ReichUI.pdb
