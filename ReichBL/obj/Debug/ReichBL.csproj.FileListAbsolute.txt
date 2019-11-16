@@ -7,3 +7,12 @@ C:\Users\amitn\source\repos\ReichUI\ReichBL\obj\Debug\ReichBL.csproj.CoreCompile
 C:\Users\amitn\source\repos\ReichUI\ReichBL\obj\Debug\ReichBL.csproj.CopyComplete
 C:\Users\amitn\source\repos\ReichUI\ReichBL\obj\Debug\ReichBL.dll
 C:\Users\amitn\source\repos\ReichUI\ReichBL\obj\Debug\ReichBL.pdb
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\ReichBL\bin\Debug\ReichBL.dll
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\ReichBL\bin\Debug\ReichBL.pdb
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\ReichBL\bin\Debug\ReichDAL.dll
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\ReichBL\bin\Debug\ReichDAL.pdb
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\ReichBL\obj\Debug\ReichBL.csprojAssemblyReference.cache
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\ReichBL\obj\Debug\ReichBL.csproj.CoreCompileInputs.cache
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\ReichBL\obj\Debug\ReichBL.csproj.CopyComplete
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\ReichBL\obj\Debug\ReichBL.dll
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\ReichBL\obj\Debug\ReichBL.pdb

@@ -1,0 +1,10 @@
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\Reichabase\bin\Debug\Reichabase.dacpac
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\Reichabase\bin\Debug\Reichabase.dll
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\Reichabase\bin\Debug\Reichabase.pdb
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\Reichabase\obj\Debug\Reichabase.sqlprojAssemblyReference.cache
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\Reichabase\obj\Debug\Model.xml
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\Reichabase\obj\Debug\refactor.xml
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\Reichabase\obj\Debug\postdeploy.sql
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\Reichabase\obj\Debug\predeploy.sql
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\Reichabase\obj\Debug\Reichabase.dll
+C:\Users\amitn\source\repos\ReichUI\ReichVoting\Reichabase\obj\Debug\Reichabase.pdb

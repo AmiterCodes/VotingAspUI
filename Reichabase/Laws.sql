@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Laws]
+(
+	[Id] INT NOT NULL PRIMARY KEY
+)

@@ -8,11 +8,22 @@ using ReichDAL;
 
 namespace ReichBL
 {
+    public enum LawStatus
+    {
+        Passed = 1,
+        Rejected = 2,
+        Pending = 3
+    }
+
     public class Law
     {
         public int ID { get; set; }
         public string Description { get; set; }
-        public int Status { get; set; }
+        public LawStatus Status { get {
+
+                return (LawStatus)DBVote.LawStatus(ID);
+            } }
+        public DateTime Time { get; set; }
         private List<Vote> votes;
 
         public List<Vote> Votes { get {
@@ -26,18 +37,36 @@ namespace ReichBL
                 return votes;
             } }
 
+        public Law(string description)
+        {
+            
+            Description = description;
+
+            DataRow row = DBlaw.AddLaw(Description);
+
+            this.ID = (int)row["ID"];
+            this.Time = (DateTime)row["Time"];
+        }
+
+        public Law(DataRow row)
+        {
+            ID = (int)row["ID"];
+            Description = (string)row["Description"];
+            Time = (DateTime)row["Time"];
+        }
+
         public Law(int ID)
         {
             DataRow row = DBlaw.GetLawByID(ID);
 
-            ID = (int)row["ID"];
+            this.ID = (int)row["ID"];
             Description = (string)row["Description"];
-            Status = (int)row["Status"];
-            
+            Time = (DateTime)row["Time"];
+
         }
         public void Vote(Vote vote)
         {
-            DBVote.addVote(vote.MemberId, ID, vote.VoteType, vote.VoteReason);
+            DBVote.AddVote(vote.MemberId, ID, vote.VoteType, vote.VoteReason);
 
         }
 

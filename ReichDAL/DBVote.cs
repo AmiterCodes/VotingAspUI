@@ -24,7 +24,22 @@ namespace ReichDAL
                 throw new Exception("could not open connection");
             }
         }
-        public static void addVote(long memberID, int lawID, int voteType, string voteReason)
+
+        public static DataTable GetVotesByMember(int memberId)
+        {
+            DBHelper helper = new DBHelper(PROVIDER, PATH);
+            if (helper.OpenConnection())
+            {
+                string sql = "SELECT * FROM Votes WHERE [Member ID] = " + memberId + ";";
+                return helper.GetDataTable(sql);
+            }
+            else
+            {
+                throw new Exception("could not open connection");
+            }
+        }
+
+        public static void AddVote(long memberID, int lawID, int voteType, string voteReason)
         {
             DBHelper helper = new DBHelper(PROVIDER, PATH);
 
@@ -40,7 +55,7 @@ namespace ReichDAL
                 }
                 else
                 {
-                    int result = lawStatus(lawID);
+                    int result = LawStatus(lawID);
                     
                     string sql1 = $"UPDATE Laws SET Status={result} WHERE ID="+lawID +";";
                     helper.WriteData(sql1);
@@ -53,7 +68,7 @@ namespace ReichDAL
                 throw new Exception("Could not open connection");
             }
         }
-        public static int lawStatus(int lawID)
+        public static int LawStatus(int lawID)
         {
             DBHelper helper = new DBHelper(PROVIDER, PATH);
 

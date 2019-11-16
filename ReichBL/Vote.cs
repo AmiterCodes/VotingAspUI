@@ -21,7 +21,9 @@ namespace ReichBL
             this.MemberId = (int)row["Member ID"];
             this.LawId = (int)row["Law ID"];
             this.VoteType = (int)row["VoteType"];
-            this.VoteReason = (string)row[VoteReason];
+            if (row["VoteReason"] is DBNull) VoteReason = "";
+            else
+            this.VoteReason = (string)row["VoteReason"];
         }
 
 

@@ -13,6 +13,7 @@ namespace ReichUI
         {
             Law law = new Law(2);
             List<Vote> list = law.Votes;
+            Console.WriteLine("Beep");
 
             foreach(Vote vote in list)
             {

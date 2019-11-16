@@ -53,7 +53,7 @@ namespace ReichDAL
             }
         }
 
-        public static void addMember(string name, long ReichCode, bool isMember)
+        public static void AddMember(string name, long ReichCode, bool isMember)
         {
             DBHelper helper = new DBHelper(PROVIDER, PATH);
             string a;
@@ -77,6 +77,51 @@ namespace ReichDAL
             }
         }
 
-        // TODO: Add member method
+        public static void RemoveMember(long ReichCode)
+        {
+            DBHelper helper = new DBHelper(PROVIDER, PATH);
+
+            if (helper.OpenConnection())
+            {
+                string sql = "SELECT * FROM Member WHERE [Reich Code] = " + ReichCode + ";";
+
+
+                DataTable a = helper.GetDataTable(sql);
+
+                if (a.Rows.Count == 0)
+                {
+                    throw new ArgumentException("wrong info");
+                }
+                else
+                {
+                    string sql1 = "DELETE FROM Member WHERE [Reich Code]=" + ReichCode + ";";
+                    helper.WriteData(sql1);
+                }
+            }
+            else
+            {
+                throw new Exception("Could not open connection");
+            }
+        }
+
+        public static void RemoveMemberFromCouncil(long ReichCode)
+        {
+            DBHelper helper = new DBHelper(PROVIDER, PATH);
+
+            if (helper.OpenConnection())
+            {
+                string sql = "UPDATE Member SET IsMember ='No' WHERE [Reich Code]=" + ReichCode + " ;";
+
+
+                helper.WriteData(sql);
+
+
+            }
+            else
+            {
+                throw new Exception("Could not open connection");
+            }
+        }
+
     }
 }
