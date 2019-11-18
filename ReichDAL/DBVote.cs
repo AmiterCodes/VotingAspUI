@@ -45,7 +45,9 @@ namespace ReichDAL
 
             if (helper.OpenConnection())
             {
-                string sql = "INSERT INTO Votes ([Member ID], [Law ID], VoteType, VoteReason) Values (" + memberID  + ", " + lawID  +", "+voteType +", '"+voteReason + ");";
+                string sql = @"INSERT INTO Votes
+([Member ID], [Law ID], VoteType, VoteReason)
+Values (" + memberID  + ", " + lawID  +", "+voteType +", '"+voteReason + "');";
 
                 int a = helper.WriteData(sql);
 

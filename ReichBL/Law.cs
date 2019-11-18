@@ -34,6 +34,7 @@ namespace ReichBL
                 {
                     votes.Add(new Vote(row));
                 }
+                
                 return votes;
             } }
 
