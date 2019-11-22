@@ -10,13 +10,13 @@ namespace ReichDAL
     public class DBlaw
     {
         private static string PROVIDER = @"Microsoft.ACE.OLEDB.12.0";
-        private static string PATH = @"..\..\..\Reichabase.accdb";
+        private static string PATH = @"Reichabase.accdb";
         public static DataTable GetPassedLaws()
         {
             DBHelper helper = new DBHelper(PROVIDER, PATH);
             if (helper.OpenConnection())
             {
-                string sql = "SELECT * FROM Laws WHERE Status = 1;";
+                string sql = "SELECT * FROM Laws;";
 
                 DataTable tb = helper.GetDataTable(sql);
 

@@ -12,7 +12,7 @@ namespace ReichDAL
     public class DBMember
     {
         private static string PROVIDER = @"Microsoft.ACE.OLEDB.12.0";
-        private static string PATH = @"..\..\..\Reichabase.accdb";
+        private static string PATH = @"Reichabase.accdb";
 
         public static DataRow GetMemberByCode(long code)
         {

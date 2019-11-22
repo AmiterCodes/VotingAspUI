@@ -10,9 +10,9 @@ namespace ReichBL
 {
     public class Member
     {
+
         public string Name { get; set; }
         public int ReichCode { get; set; }
-        public bool IsRaciallyDisabled { get; set; }
         public bool IsMember { get; set; }
 
         public Member(int ReichCode)
@@ -21,7 +21,6 @@ namespace ReichBL
 
             Name = (string)row["Name"];
             ReichCode = (int)row["Reich Code"];
-            IsRaciallyDisabled = (bool)row["IsRaciallyDisabled"];
             IsMember = (bool)row["IsMember"];
         }
 
@@ -88,7 +87,6 @@ namespace ReichBL
         {
             return $@"Name: {Name}
   Reich Code: #{ReichCode}
-  Is Racially Disabled?: {IsRaciallyDisabled}
   Is Member of the Parliment?: {IsMember}";
         }
     }

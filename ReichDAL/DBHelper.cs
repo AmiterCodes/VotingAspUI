@@ -3,8 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Web;
+using System.Configuration;
+//using System.Linq;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
 using System.Data.OleDb;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace ReichDAL
 {
@@ -41,7 +51,8 @@ namespace ReichDAL
         /// <returns>connection string</returns>
         public string BuildConnString()
         {
-            return String.Format(@"Provider={0};Data Source={1};", provider, source);
+            string path = HttpContext.Current.Server.MapPath("App_Data/" + source);
+            return String.Format(@"Provider={0};Data Source={1};", provider, path);
 
         }
 
@@ -161,8 +172,7 @@ namespace ReichDAL
 
             }
             catch(Exception e) // basically, if the connection throws some kind of exception.
-            {
-                return false;
+            {return false;
             }
             // if it didn't return false, it probably went successful, do a true.
             return true;

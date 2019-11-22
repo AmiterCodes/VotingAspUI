@@ -10,7 +10,7 @@ namespace ReichDAL
     public class DBVote
     {
         private static string PROVIDER = @"Microsoft.ACE.OLEDB.12.0";
-        private static string PATH = @"..\..\..\Reichabase.accdb";
+        private static string PATH = @"Reichabase.accdb";
         public static DataTable GetVotesByLaw(int lawId)
         {
             DBHelper helper = new DBHelper(PROVIDER, PATH);
