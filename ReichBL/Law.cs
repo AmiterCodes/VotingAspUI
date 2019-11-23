@@ -25,9 +25,9 @@ namespace ReichBL
         public DateTime Time { get; set; }
         private List<Vote> votes;
 
-        public static List<Law> GetPassedLaws()
+        public static List<Law> GetLaws()
         {
-            DataTable a = DBlaw.GetPassedLaws();
+            DataTable a = DBlaw.GetLaws();
             List<Law> b = new List<Law>();
             for (int i = 0; i < a.Rows.Count; i++)
             {
@@ -130,7 +130,7 @@ namespace ReichBL
         }
         public void Vote(Vote vote)
         {
-            DBVote.AddVote(vote.MemberId, ID, vote.VoteType, vote.VoteReason);
+            DBVote.AddVote(vote.MemberId, ID, (int)vote.VoteType, vote.VoteReason);
 
         }
 

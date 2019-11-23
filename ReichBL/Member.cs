@@ -11,19 +11,40 @@ namespace ReichBL
     public class Member
     {
 
+
         public string Name { get; set; }
         public int ReichCode { get; set; }
         public bool IsMember { get; set; }
+        public string Password { get; set; }
 
         public Member(int ReichCode)
         {
             DataRow row = DBMember.GetMemberByCode(ReichCode);
 
             Name = (string)row["Name"];
+            this.ReichCode = ReichCode;
+            Password = (string)row["Password"];
+            IsMember = (bool)row["IsMember"];
+        }
+
+        public Member(DataRow row)
+        {
+            Name = (string)row["Name"];
+            Password = (string)row["Password"];
             ReichCode = (int)row["Reich Code"];
             IsMember = (bool)row["IsMember"];
         }
 
+        public Member(string Name, string Password)
+        {
+            DataRow row = DBMember.GetMember(Name, Password);
+            if (row == null) throw new ArgumentException("Authentication Failed");
+
+            Name = (string)row["Name"];
+            Password = (string)row["Password"];
+            ReichCode = (int)row["Reich Code"];
+            IsMember = (bool)row["IsMember"];
+        }
 
         public List<Law> GetUnvotedLaws()
         {
@@ -58,17 +79,19 @@ namespace ReichBL
         {
             DBMember.RemoveMemberFromCouncil(ReichCode);
         }
+        
 
-        public bool CheckIfVoted(Law law)
+        public static List<Member> GetCouncilMembers()
         {
-            DataTable a = DBVote.GetVotesByLaw(law.ID);
-            bool voted = false;
-            for (int i = 0; i < a.Rows.Count; i++)
+            List<Member> list = new List<Member>();
+            DataTable tb = DBMember.GetActiveMembers();
+
+            foreach(DataRow row in tb.Rows)
             {
-                if ((long)a.Rows[i][1] == this.ReichCode)
-                    voted = true;
+                list.Add(new Member(row));
             }
-            return voted;
+
+            return list;
         }
 
         public List<Vote> GetVotesByMember()

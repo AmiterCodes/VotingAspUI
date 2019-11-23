@@ -14,6 +14,8 @@ namespace ReichDAL
         private static string PROVIDER = @"Microsoft.ACE.OLEDB.12.0";
         private static string PATH = @"Reichabase.accdb";
 
+        
+
         public static DataRow GetMemberByCode(long code)
         {
             DBHelper helper = new DBHelper(PROVIDER, PATH);
@@ -23,8 +25,8 @@ namespace ReichDAL
                 string sql = $"SELECT * FROM Member WHERE [Reich Code] = {code};";
 
                 DataTable tb = helper.GetDataTable(sql);
-
-                if(tb.Rows.Count == 0)
+                helper.CloseConnection();
+                if (tb.Rows.Count == 0)
                 {
                     throw new ArgumentException("No Member Found");
                 }
@@ -45,9 +47,31 @@ namespace ReichDAL
                 string sql = "SELECT * FROM Member WHERE IsMember = Yes;";
 
                 DataTable tb = helper.GetDataTable(sql);
-
+                helper.CloseConnection();
                 return tb;
             } else
+            {
+                throw new Exception("Could not open connection");
+            }
+        }
+
+        public static DataRow GetMember(string name, string password)
+        {
+            DBHelper helper = new DBHelper(PROVIDER, PATH);
+
+            if (helper.OpenConnection())
+            {
+                string sql = $"SELECT * FROM Member WHERE [Name] = '{name}' AND [Password] = '{password}';";
+
+                DataTable tb = helper.GetDataTable(sql);
+                helper.CloseConnection();
+                if (tb.Rows.Count == 0)
+                {
+                    return null;
+                }
+                return tb.Rows[0];
+            }
+            else
             {
                 throw new Exception("Could not open connection");
             }
@@ -64,12 +88,11 @@ namespace ReichDAL
                 string sql = "INSERT INTO Memeber (Name, [Reich Code], IsMember) Values ('" + name  + "', " + ReichCode  +", '"+a+ "');";
 
                 int b = helper.WriteData(sql);
-
+                helper.CloseConnection();
                 if (b == -1)
                 {
                     throw new ArgumentException("wrong info");
                 }
-
             }
             else
             {
@@ -96,6 +119,7 @@ namespace ReichDAL
                 {
                     string sql1 = "DELETE FROM Member WHERE [Reich Code]=" + ReichCode + ";";
                     helper.WriteData(sql1);
+                    helper.CloseConnection();
                 }
             }
             else
@@ -114,7 +138,7 @@ namespace ReichDAL
 
 
                 helper.WriteData(sql);
-
+                helper.CloseConnection();
 
             }
             else

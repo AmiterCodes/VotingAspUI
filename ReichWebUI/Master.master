@@ -5,23 +5,22 @@
 <html>
 <head runat="server">
     <title>Reich Voting System</title>
+    <link href="Main.css" rel="stylesheet" />
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
     <div>
         <table>
             <tr>
-                <td><a>Main</a></td>
-                <td><a>Search</a></td>
-                <td><a>Login</a></td>
+                <td><a href="Default.aspx">Main</a></td>
+                <td><a href="Login.aspx">Login</a></td>
+                <td><%=("Hello, " + (string)(Session["Name"])) %></td>
             </tr>
         </table>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
     </div>
-    </form>
 </body>
 </html>

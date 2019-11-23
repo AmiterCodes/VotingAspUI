@@ -17,11 +17,14 @@ public partial class _Default : System.Web.UI.Page
     public static string GetTable(Law[] t)
     {
 
+        string table = "<h1>Laws</h1>";
 
-        if (t.Length == 0) return "";
 
-        string table = "";
-        table += "<table>";
+        if (t.Length == 0) return table + "No Laws Added Yet";
+
+
+
+        table += "<table border='1'>";
 
         Type type = t[0].GetType();
 
@@ -52,7 +55,45 @@ public partial class _Default : System.Web.UI.Page
                 }
             }
 
-            table += "<td><a src='./Votes.aspx?Law=" + v.ID + "'>Votes</a></td>";
+            table += "<td><a href='./Votes.aspx?Law=" + v.ID + "'>Votes</a></td>";
+            table += "</tr>";
+        }
+
+        table += "</table>";
+        return table;
+    }
+
+    public static string GetTable(Member[] t)
+    {
+
+        string table = "";
+
+        if (t.Length == 0) return "No Members yet.";
+
+
+        table += "<h1>Council Members</h1>";
+
+        table += "<table border='1'>";
+
+        Type type = t[0].GetType();
+
+
+        table += "<tr>";
+
+        table += "<th>Name</th><th>Votes</th>";
+
+
+
+        table += "</tr>";
+
+
+        foreach (Member m in Member.GetCouncilMembers())
+        {
+            table += "<tr>";
+
+            table += "<td>" + m.Name + "</td>";
+            table += "<td><a href='Votes.aspx?Member=" + m.ReichCode + "'>Votes</a></td>";
+
             table += "</tr>";
         }
 
@@ -66,7 +107,7 @@ public partial class _Default : System.Web.UI.Page
         connString = String.Format(@"Provider={0};Data Source={1};", "Microsoft.ACE.OLEDB.12.0", path);
 
 
-        IEnumerable<Law> laws = Law.GetPassedLaws();
+        IEnumerable<Law> laws = Law.GetLaws();
 
         if (Request.Form["search"] != null)
         {
@@ -75,5 +116,6 @@ public partial class _Default : System.Web.UI.Page
 
 
         table = GetTable(laws.ToArray());
+        table += GetTable(Member.GetCouncilMembers().ToArray());
     }
 }

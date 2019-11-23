@@ -11,7 +11,7 @@ namespace ReichDAL
     {
         private static string PROVIDER = @"Microsoft.ACE.OLEDB.12.0";
         private static string PATH = @"Reichabase.accdb";
-        public static DataTable GetPassedLaws()
+        public static DataTable GetLaws()
         {
             DBHelper helper = new DBHelper(PROVIDER, PATH);
             if (helper.OpenConnection())
@@ -20,12 +20,14 @@ namespace ReichDAL
 
                 DataTable tb = helper.GetDataTable(sql);
 
+                helper.CloseConnection();
                 return tb;
             }
             else
             {
                 throw new Exception("Could not open connection");
             }
+            
         }
         public static DataTable GetPendingLaws()
         {
@@ -36,6 +38,7 @@ namespace ReichDAL
 
                 DataTable tb = helper.GetDataTable(sql);
 
+                helper.CloseConnection();
                 return tb;
             }
             else
@@ -54,11 +57,12 @@ namespace ReichDAL
                 string sql = $"SELECT * FROM Laws WHERE [ID] = {ID};";
 
                 DataTable tb = helper.GetDataTable(sql);
-
+                helper.CloseConnection();
                 if (tb.Rows.Count == 0)
                 {
                     throw new ArgumentException("No Law Found");
                 }
+
                 return tb.Rows[0];
             }
             else
@@ -75,14 +79,15 @@ namespace ReichDAL
                 string sql = "INSERT INTO Laws (Description, Status) Values ('"+Description +"');";
 
                 int a=helper.InsertWithAutoNumKey(sql);
-
-
                 if (a == -1)
                 {
                     throw new ArgumentException("wrong info");
                 }
-                return helper.GetDataTable("SELECT FROM Laws WHERE ID = " + a + ";").Rows[0];
 
+                DataRow row =  helper.GetDataTable("SELECT FROM Laws WHERE ID = " + a + ";").Rows[0];
+                helper.CloseConnection();
+                return row;
+                
             }
             else
             {
@@ -99,7 +104,7 @@ namespace ReichDAL
                 string sql = "UPDATE Laws SET Status =" + status + "WHERE ID=" + id + ";";
 
                 int a = helper.WriteData(sql);
-                
+                helper.CloseConnection();
                 if (a == -1)
                 {
                     throw new ArgumentException("wrong info");

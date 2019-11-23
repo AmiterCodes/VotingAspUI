@@ -17,11 +17,36 @@ namespace ReichDAL
             if (helper.OpenConnection())
             {
                 string sql = "SELECT * FROM Votes WHERE [Law ID] = " + lawId + ";";
-                return helper.GetDataTable(sql);
+
+                DataTable tb = helper.GetDataTable(sql);
+                helper.CloseConnection();
+                return tb;
             }
             else
             {
                 throw new Exception("could not open connection");
+            }
+        }
+
+        public static DataRow GetVote(int memberId, int lawId)
+        {
+            DBHelper helper = new DBHelper(PROVIDER, PATH);
+
+            if (helper.OpenConnection())
+            {
+                string sql = $"SELECT * FROM Votes WHERE [Law ID] = {lawId} AND [Member ID] = {memberId};";
+
+                DataTable tb = helper.GetDataTable(sql);
+                helper.CloseConnection();
+                if (tb.Rows.Count == 0)
+                {
+                    return null;
+                }
+                return tb.Rows[0];
+            }
+            else
+            {
+                throw new Exception("Could not open connection");
             }
         }
 
@@ -31,7 +56,9 @@ namespace ReichDAL
             if (helper.OpenConnection())
             {
                 string sql = "SELECT * FROM Votes WHERE [Member ID] = " + memberId + ";";
-                return helper.GetDataTable(sql);
+                DataTable tb = helper.GetDataTable(sql);
+                helper.CloseConnection();
+                return tb;
             }
             else
             {
@@ -61,7 +88,7 @@ Values (" + memberID  + ", " + lawID  +", "+voteType +", '"+voteReason + "');";
                     
                     string sql1 = $"UPDATE Laws SET Status={result} WHERE ID="+lawID +";";
                     helper.WriteData(sql1);
-                    
+                    helper.CloseConnection();
                 }
 
             }
@@ -78,7 +105,7 @@ Values (" + memberID  + ", " + lawID  +", "+voteType +", '"+voteReason + "');";
             {
                 string sel = "SELECT VoteType FRON Votes WHERE [Law ID]=" + lawID + " AND VoteType=1;";
                 DataTable votes = helper.GetDataTable(sel);
-
+                helper.CloseConnection();
                 int forVotes = 0;
                 int againstVotes = 0;
                 int neutralVotes = 0;
