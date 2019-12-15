@@ -171,7 +171,7 @@ namespace ReichDAL
                 connOpen = true;
 
             }
-            catch(Exception e) // basically, if the connection throws some kind of exception.
+            catch // basically, if the connection throws some kind of exception.
             {return false;
             }
             // if it didn't return false, it probably went successful, do a true.
