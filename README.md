@@ -1,2 +1,2 @@
-# ReichVoting
-Welcome to the reich voting area
+# Voting UI
+Welcome to the voting area
